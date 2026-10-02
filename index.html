@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Year 3 Reading Quiz - Why Bats Fly At Night</title>
+<style>
+:root{--purple:#5d0e92;--purple2:#8a1bd0;--pink:#ef2b98;--gold:#ffbf00;--ink:#28163e;--green:#20b953;--red:#ed2f72}
+*{box-sizing:border-box}
+html,body{margin:0;max-width:100%;overflow-x:hidden;font-family:"Trebuchet MS",Arial,sans-serif;background:linear-gradient(135deg,#fffdf7,#faf3ff);color:var(--ink)}
+.screen{display:none;min-height:100vh;flex-direction:column}.screen.active{display:flex}
+.topline{height:12px;background:linear-gradient(90deg,var(--purple),var(--pink),var(--gold),var(--purple))}
+.footer{padding:10px 12px 14px;text-align:center;border-top:2px solid #efd174;background:linear-gradient(#fff,#fff5d9)}
+.footer img{display:block;width:min(420px,90vw);height:auto;margin:auto}
+.btn{border:0;border-radius:18px;min-height:54px;padding:12px 20px;font-size:19px;font-weight:1000;cursor:pointer}
+.primary{background:linear-gradient(135deg,var(--purple),var(--purple2),var(--pink));color:#fff}
+.secondary{background:#fff;border:2px solid #c9afe0;color:var(--purple)}
+.startGrid{width:min(1050px,94vw);margin:auto;display:grid;grid-template-columns:minmax(250px,340px) minmax(320px,540px);gap:28px;align-items:center;padding:28px 0;flex:1}
+.logo{width:min(315px,76vw);display:block;margin:auto}.panel{background:#fff;border:3px solid #efc45d;border-radius:30px;padding:30px;box-shadow:0 18px 44px rgba(72,11,96,.12)}
+.kicker{font-size:15px;font-weight:1000;color:var(--pink);text-transform:uppercase}.panel h1{margin:8px 0;color:var(--purple);font-size:clamp(34px,5vw,54px);line-height:1}.sub{font-size:19px;font-weight:800;color:#765080;margin-bottom:20px}
+label{display:block;color:var(--purple);font-weight:1000;font-size:18px;margin-bottom:7px}input{width:100%;height:56px;border:2px solid #cbb5dc;border-radius:17px;padding:0 15px;font-size:19px}
+.quizWrap{width:min(1080px,95vw);margin:auto;padding:14px 0;flex:1}.headbar{display:flex;gap:12px;align-items:center}.smallLogo{width:125px;max-width:28vw}.progressArea{flex:1;min-width:0}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.pill{background:#fff;border:3px solid #efc35e;border-radius:22px;padding:10px 17px;font-weight:1000;color:var(--purple);font-size:clamp(18px,2.6vw,28px)}
+.tools{display:flex;gap:8px;align-items:center}.score{background:#fff;border:3px solid #efc35e;border-radius:20px;padding:9px 14px;font-size:21px;font-weight:1000;color:var(--purple)}.iconBtn{width:52px;height:52px;border-radius:50%;border:3px solid #efc35e;background:#fff;font-size:24px;cursor:pointer}
+.track{height:18px;background:#f0e1f2;border:3px solid #efc35e;border-radius:99px;overflow:hidden;margin-top:7px}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--purple2));transition:.25s}
+.sectionCard{position:relative;background:#fff;border:4px solid var(--purple2);border-radius:28px;padding:20px;margin-top:12px;box-shadow:0 18px 35px rgba(65,11,89,.12)}
+.sectionTitle{font-size:clamp(25px,3vw,36px);font-weight:1000;color:var(--purple);margin:0 0 12px}
+.textCard{background:linear-gradient(135deg,#fffaf0,#fff4fb);border:3px solid #efc35e;border-radius:24px;padding:20px;font-size:clamp(20px,2.3vw,27px);line-height:1.55;font-weight:800;white-space:pre-line}
+.textCard mark{background:#fff27a;color:#241637;padding:1px 4px;border-radius:5px;box-shadow:0 0 0 2px rgba(255,191,0,.18)}
+.qBlock{margin-top:20px;background:#fff;border:3px solid #e4b2ef;border-radius:24px;padding:18px;position:relative}
+.question{font-size:clamp(24px,3.2vw,36px);line-height:1.18;font-weight:1000;margin:0 0 14px}
+.choices{display:grid;gap:9px}.choice{display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:linear-gradient(180deg,#fff,#faf5ff);border:3px solid #d7aee8;border-radius:18px;padding:11px 14px;min-height:58px;color:#321b48;font-size:clamp(17px,2vw,22px);font-weight:900;cursor:pointer;transition:.15s}
+.letter{flex:0 0 40px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(#9225d9,#6410aa);color:#fff;font-weight:1000}
+.choice.correct{border-color:#13a844!important;background:#dff7e7!important;box-shadow:0 0 0 5px rgba(32,185,83,.24) inset}.choice.correct .letter{background:linear-gradient(#2be466,#17af47)}
+.choice.wrong{border-color:#ed2f72!important;background:#ffe8f0!important;box-shadow:0 0 0 4px rgba(237,47,114,.16) inset}.choice.dim{opacity:.62}
+.feedback{min-height:40px;margin-top:10px;font-size:18px;font-weight:1000;text-align:center}.hint{color:#d6246b}.correctText{color:#168f3d}
+.inlineStar{display:none;position:absolute;right:16px;top:10px;width:min(130px,24vw);height:auto;z-index:5;filter:drop-shadow(0 7px 10px rgba(73,12,96,.18));pointer-events:none}
+.inlineStar.show{display:block;animation:starPop .28s ease-out}
+@keyframes starPop{from{opacity:0;transform:scale(.55) rotate(-8deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+.finalBox{width:min(850px,94vw);margin:auto;background:#fff;border:4px solid #efc35c;border-radius:30px;padding:28px;text-align:center}.finalBox h2{color:var(--purple);font-size:clamp(34px,5vw,52px)}.bigScore{font-size:clamp(50px,8vw,80px);font-weight:1000;color:var(--pink)}.report{text-align:left;max-height:360px;overflow:auto;border:2px solid #ead8a3;background:#fffdf7;padding:15px;border-radius:18px;margin:16px 0}.item{padding:10px 0;border-bottom:1px solid #eee}
+@media(max-width:780px){.startGrid{grid-template-columns:1fr}.headbar{flex-direction:column;align-items:stretch}.smallLogo{align-self:center;width:150px}.question{font-size:clamp(24px,6vw,34px)}.inlineStar{width:95px;right:8px;top:8px}}
+</style>
+</head>
+<body>
+<section id="start" class="screen active">
+<div class="topline"></div>
+<div class="startGrid">
+<img class="logo" src="assets/year3-logo.png" alt="Year 3 logo">
+<div class="panel">
+<div class="kicker">Year 3 • Reading Comprehension • Week 4</div>
+<h1>Why Bats Fly At Night</h1>
+<div class="sub">Read the fixed text, then answer one question at a time.</div>
+<form id="startForm">
+<label for="student">Student's name</label>
+<input id="student" required maxlength="40" placeholder="Type your name here">
+<button class="btn primary" style="width:100%;margin-top:16px" type="submit">START QUIZ ⭐</button>
+</form>
+</div>
+</div>
+<div class="footer"><img src="assets/md-banner.png" alt="Designed by M.D."></div>
+</section>
+
+<section id="quiz" class="screen">
+<div class="topline"></div>
+<div class="quizWrap">
+<div class="headbar">
+<img class="smallLogo" src="assets/year3-logo.png" alt="Year 3 logo">
+<div class="progressArea">
+<div class="meta">
+<div id="counter" class="pill"></div>
+<div class="tools">
+<div class="score">⭐ Score: <span id="score">0</span></div>
+<button id="soundBtn" class="iconBtn" type="button">🔊</button>
+<button id="homeBtn" class="iconBtn" type="button">🏠</button>
+</div>
+</div>
+<div class="track"><div id="fill" class="fill"></div></div>
+</div>
+</div>
+
+<div class="sectionCard">
+<h2 id="sectionTitle" class="sectionTitle"></h2>
+<div id="sectionText" class="textCard"></div>
+
+<div class="qBlock">
+<img id="inlineStar" class="inlineStar" src="assets/correct-star.png" alt="Correct! Great Answer!">
+<div id="question" class="question"></div>
+<div id="choices" class="choices"></div>
+<div id="feedback" class="feedback" aria-live="polite"></div>
+</div>
+</div>
+</div>
+<div class="footer"><img src="assets/md-banner.png" alt="Designed by M.D."></div>
+</section>
+
+<section id="final" class="screen">
+<div class="topline"></div>
+<div class="finalBox">
+<img class="smallLogo" src="assets/year3-logo.png" alt="Year 3 logo">
+<h2>Reading Quiz Complete! ⭐</h2>
+<div id="finalName" class="sub"></div>
+<div id="bigScore" class="bigScore"></div>
+<div id="finalMsg" class="sub"></div>
+<div id="report" class="report"></div>
+<button id="restartBtn" class="btn secondary" type="button">Restart Quiz</button>
+</div>
+<div class="footer"><img src="assets/md-banner.png" alt="Designed by M.D."></div>
+</section>
+
+<audio id="applause" preload="auto" src="assets/applause.mp3"></audio>
+
+<script>
+const SECTIONS=[{"title": "Part 1 — Rat Loves Bat’s Soup", "text": "Long long ago Rat and Bat were best friends. They often ate meals together. Rat loved it when Bat cooked his delicious soup. It was SO tasty.\n\n“How do you get this soup so full of flavour? It is my favourite meal.” said Rat.\n\n“It’s all in the cooking method. I boil myself in the water, it’s my skin that tastes so sweet! Come by earlier tomorrow, and I’ll show you.” replied Bat.", "questions": [{"q": "What was Rat’s favourite meal?", "choices": ["Bat’s soup.", "Fruit salad.", "Cheese sandwiches.", "Fish and chips."], "answer": "Bat’s soup.", "evidence": "Rat loved it when Bat cooked his delicious soup. It was SO tasty."}, {"q": "How did the Bat say he got his soup so full of flavour?", "choices": ["He got into the pot / his skin was sweet.", "He added berries.", "He used special herbs.", "He cooked it all night."], "answer": "He got into the pot / his skin was sweet.", "evidence": "I boil myself in the water, it’s my skin that tastes so sweet!"}, {"q": "List two synonyms for ‘tasty’.", "choices": ["flavourful and delicious", "cold and warm", "early and late", "devious and nocturnal"], "answer": "flavourful and delicious", "evidence": "Rat loved it when Bat cooked his delicious soup. It was SO tasty."}]}, {"title": "Part 2 — Bat’s Trick", "text": "The next day, Rat arrived early for lunch, eager to learn from Bat and see how he cooked this delectable soup.\n\nBut Bat had a trick up his sleeve.\n\nHe added warm water to the pot and told Rat it was boiling water. He got into the pot for a few minutes, then got out. The soup cooked for a while longer, and when he served it up for Rat, it was just as flavourful and tasty as before.", "questions": [{"q": "Explain this statement: ‘Bat had a trick up his sleeve.’", "choices": ["Bat had a plan to play a trick on Rat.", "Bat hid food in his sleeve.", "Bat wore a magic coat.", "Bat wanted to teach Rat honestly."], "answer": "Bat had a plan to play a trick on Rat.", "evidence": "But Bat had a trick up his sleeve."}, {"q": "What did Bat do that Rat didn’t see and how did this impact Rat?", "choices": ["Bat used warm water but told Rat it was boiling; Rat later used boiling water and burnt himself.", "Bat added berries; Rat made sweet soup.", "Bat left the cave; Rat followed him.", "Bat told the king; Rat became a prisoner."], "answer": "Bat used warm water but told Rat it was boiling; Rat later used boiling water and burnt himself.", "evidence": "He added warm water to the pot and told Rat it was boiling water."}, {"q": "Degrees of comparison: ______, earlier, ______.", "choices": ["early, earliest", "earlyer, earlyest", "more early, most early", "earliest, early"], "answer": "early, earliest", "evidence": "The next day, Rat arrived early for lunch"}]}, {"title": "Part 3 — Rat Copies Bat", "text": "The Rat was so impressed that when he arrived home, he told his wife he’d cook supper. He boiled some water and got into the pot. He screeched and squealed in pain, and jumped out of the pot.\n\nHis wife was very angry and she reported what had happened to the king.\n\nThe king ordered the animals to look for Bat – he had to become a prisoner because of his devious behaviour.", "questions": [{"q": "Why did the king order that Bat become a prisoner?", "choices": ["Bat was devious and Rat got burnt because of his behaviour.", "Bat stole the king’s food.", "Bat slept in a cave.", "Bat refused to cook soup."], "answer": "Bat was devious and Rat got burnt because of his behaviour.", "evidence": "The king ordered the animals to look for Bat – he had to become a prisoner because of his devious behaviour."}, {"q": "Make two words from one word: he’d –", "choices": ["he would", "he did", "he had", "he should"], "answer": "he would", "evidence": "he told his wife he’d cook supper"}]}, {"title": "Part 4 — Why Bats Fly At Night", "text": "All the animals searched and searched for Bat.\n\nHe sensed there would be trouble and hid in a cave.\n\nFrom that day Bat had to change his habits. He could not come out to look for food during the day, he could only come out at night when the other animals were sleeping.\n\nThat’s how bats became nocturnal creatures.", "questions": [{"q": "What does nocturnal mean?", "choices": ["Being awake at night and sleeping during the day.", "Being awake only during the day.", "Living only in caves.", "Flying all the time."], "answer": "Being awake at night and sleeping during the day.", "evidence": "he could only come out at night when the other animals were sleeping."}, {"q": "The opposite of nocturnal is", "choices": ["diurnal", "devious", "delicious", "delectable"], "answer": "diurnal", "evidence": "That’s how bats became nocturnal creatures."}]}];
+const $=id=>document.getElementById(id);
+const screens=[$("start"),$("quiz"),$("final")];
+
+let secIndex=0,qIndex=0,score=0,name="",soundOn=true,totalAnswered=0;
+let mistakes=[];
+const totalQuestions=SECTIONS.reduce((n,s)=>n+s.questions.length,0);
+
+function escRegExp(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
+
+function show(s){
+  screens.forEach(x=>x.classList.remove("active"));
+  s.classList.add("active");
+  window.scrollTo(0,0);
+}
+
+function play(){
+  if(!soundOn)return;
+  const a=$("applause");
+  try{a.currentTime=0;a.play().catch(()=>{})}catch(e){}
+}
+
+function shuffle(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function setTextWithHighlight(sectionText,evidence){
+  const safeText=sectionText;
+  const re=new RegExp(escRegExp(evidence),"i");
+  if(re.test(safeText)){
+    $("sectionText").innerHTML=safeText.replace(re,m=>`<mark>${m}</mark>`);
+  }else{
+    $("sectionText").textContent=safeText;
+  }
+}
+
+function render(){
+  const section=SECTIONS[secIndex];
+  const q=section.questions[qIndex];
+
+  $("sectionTitle").textContent=section.title;
+  $("sectionText").textContent=section.text;
+  $("inlineStar").classList.remove("show");
+  $("counter").textContent=`Question ${totalAnswered+1} of ${totalQuestions}`;
+  $("score").textContent=score;
+  $("fill").style.width=`${(totalAnswered/totalQuestions)*100}%`;
+  $("question").textContent=q.q;
+  $("feedback").textContent="";
+  $("choices").innerHTML="";
+
+  const items=shuffle(q.choices.map(c=>({text:c,correct:c===q.answer})));
+  const letters=["A","B","C","D"];
+
+  items.forEach((item,i)=>{
+    const b=document.createElement("button");
+    b.type="button";
+    b.className="choice";
+    b.dataset.correct=item.correct?"1":"0";
+    b.innerHTML=`<span class="letter">${letters[i]}</span><span>${item.text}</span>`;
+    b.addEventListener("click",()=>answer(q,b,item.correct));
+    $("choices").appendChild(b);
+  });
+}
+
+function answer(q,btn,isCorrect){
+  const buttons=[...$("choices").children];
+  if(buttons.some(b=>b.dataset.done==="1"))return;
+
+  buttons.forEach(b=>{
+    b.disabled=true;
+    b.dataset.done="1";
+    if(b.dataset.correct==="1") b.classList.add("correct");
+    else b.classList.add("dim");
+  });
+
+  // Highlight evidence directly in the fixed reading text.
+  setTextWithHighlight(SECTIONS[secIndex].text,q.evidence);
+
+  if(isCorrect){
+    score++;
+    $("score").textContent=score;
+    $("feedback").className="feedback correctText";
+    $("feedback").textContent="✓ Correct! Great answer!";
+    $("inlineStar").classList.add("show");
+    play();
+  }else{
+    btn.classList.remove("dim");
+    btn.classList.add("wrong");
+    $("feedback").className="feedback hint";
+    $("feedback").textContent="✗ Look at the green answer and the highlighted text.";
+    mistakes.push({q:q.q,correct:q.answer});
+  }
+
+  totalAnswered++;
+
+  setTimeout(()=>{
+    $("inlineStar").classList.remove("show");
+    qIndex++;
+    if(qIndex>=SECTIONS[secIndex].questions.length){
+      secIndex++;
+      qIndex=0;
+    }
+    if(secIndex>=SECTIONS.length) finish();
+    else render();
+  },1700);
+}
+
+function finish(){
+  show($("final"));
+  $("finalName").textContent=`Well done, ${name}!`;
+  $("bigScore").textContent=`${score} / ${totalQuestions}`;
+  const p=Math.round(score/totalQuestions*100);
+  $("finalMsg").textContent=
+    p===100 ? "Outstanding — perfect reading!" :
+    p>=80 ? "Excellent comprehension!" :
+    p>=60 ? "Good work — review below." :
+    "Read the text again and practise.";
+
+  if(!mistakes.length){
+    $("report").innerHTML="<h3>Final Report</h3><p>⭐ No mistakes recorded. Fantastic work!</p>";
+  }else{
+    $("report").innerHTML="<h3>Questions to review</h3>"+
+      mistakes.map(m=>`<div class="item"><b>${m.q}</b><br><span style="color:#5d0e92;font-weight:900">${m.correct}</span></div>`).join("");
+  }
+}
+
+$("startForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  name=$("student").value.trim();
+  if(!name)return;
+  secIndex=0;qIndex=0;score=0;totalAnswered=0;mistakes=[];
+  show($("quiz"));
+  render();
+});
+
+$("soundBtn").addEventListener("click",()=>{
+  soundOn=!soundOn;
+  $("soundBtn").textContent=soundOn?"🔊":"🔇";
+});
+
+$("homeBtn").addEventListener("click",()=>show($("start")));
+$("restartBtn").addEventListener("click",()=>show($("start")));
+</script>
+</body>
+</html>
